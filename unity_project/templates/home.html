@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %} 
+  <div class="container">
+     <div class="title">UNITY</div>
+     <hr/>
+     <div class="month_year">{{month_year}}</div>
+     <div class="stats">
+        <div class="each-stats">
+          <div class="stat-title">Email list</div>
+          <div class="count">{{emails_subscribed_count}}</div>
+        </div>
+        <div class="each-stats">
+          <div class="stat-title">New this month</div>
+          <div class="count">{{emails_new_count}}</div>
+        </div>
+        <div class="each-stats">
+          <div class="stat-title">Unsubsribed</div>
+          <div class="count">{{emails_unsubscribed_count}}</div>
+        </div>
+     </div>
+     <table class="email-list">
+      <tr>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+      {% for email in emails_subscribed %}
+      <tr>
+        <td>{{ email.email }}</td>
+        <td>{{ email.created_at_humanize }}</td>
+        <td>{{ email.status }}</td>
+      </tr>  
+      {% endfor %}    
+    </table>
+  </div>
+  
+  
+{% endblock content %}
